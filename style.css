@@ -1,0 +1,150 @@
+* {
+    font-family: Franklin Gothic Heavy;
+}
+
+::-webkit-scrollbar{
+    width: 0px;
+}
+
+section {
+    display: flex;
+}
+
+.binToAdd {
+    width: 268px;
+    height: 720px;
+    border-radius: 15px;
+    background: #495464;
+    box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.25);
+    margin: auto;
+    border: solid 1px black;
+    overflow: auto;
+}
+
+.binToAdd .containerToAdd {
+    width: 200px; 
+    height: 200px;
+    background: #BBBFCA; 
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25) inset; 
+    border-radius: 20px; 
+    border: 0.50px black solid;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.binFatherToReceive {
+    width: 1094px;
+    height: 720px;
+    background: #BBBBBE;
+    box-shadow: 8px 8px 8px rgba(0, 0, 0, 0.25) inset;
+    border-radius: 20px;
+    margin: auto;
+    border: solid 1px black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.receiveMsg {
+    width: 1000px;
+    height: 100px;
+    border-radius: 1.25rem;
+    background-color: #E8E8E8;
+    box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
+    border: 1px solid #000;
+    text-align: center;
+    margin: auto;
+}
+
+.msg {
+    color: black; 
+    font-size: 40px; 
+    font-family: Franklin Gothic Heavy; 
+    font-weight: 400; 
+    word-wrap: break-word
+}
+
+.binChildToReceive{
+    width: 1000px;
+    height: 580px;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+}
+
+.bin1, .bin2, .bin3, .bin4{
+    width: 216px; 
+    height: 580px; 
+    background: #E8E8E8; 
+    box-shadow: 2px 6px 4px rgba(0, 0, 0, 0.25) inset; 
+    border-radius: 20px; 
+    border: 0.50px black solid;
+    background-image: url("https://images.pexels.com/photos/129731/pexels-photo-129731.jpeg");
+    background-size: cover;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.btnSolution{
+    visibility: hidden;
+    font-size: 20px;
+    background-color: aqua;
+    border-radius: 10px;
+    position: absolute;
+    bottom: 2%;
+    right: 1%;
+}
+
+.figure1{
+    width: 100px; 
+    height: 150px; 
+    background: #7000FF; 
+    box-shadow: 4px 6px 10px rgba(0, 0, 0, 0.25); 
+    border: 0.50px black solid
+}
+
+.figure2{
+    width: 100px; 
+    height: 90px; 
+    background: rgb(158, 0, 173); 
+    box-shadow: 4px 6px 10px rgba(0, 0, 0, 0.25); 
+    border: 0.50px black solid
+}
+
+.figure3{
+    width: 100px; 
+    height: 120px; 
+    background: rgb(255, 0, 0); 
+    box-shadow: 4px 6px 10px rgba(0, 0, 0, 0.25); 
+    border: 0.50px black solid
+}
+
+.figure4{
+    width: 100px; 
+    height: 40px; 
+    background: rgb(231, 235, 0); 
+    box-shadow: 6px 4px 10px rgba(0, 0, 0, 0.25); 
+    border: 0.50px black solid
+}
+
+.figure5{
+    width: 100px; 
+    height: 70px; 
+    background: rgb(255, 162, 0); 
+    box-shadow: 6px 4px 10px rgba(0, 0, 0, 0.25); 
+    border: 0.50px black solid
+}
+
+.figure6{
+    width: 100px; 
+    height: 130px; 
+    background: rgb(0, 255, 85); 
+    box-shadow: 6px 4px 10px rgba(0, 0, 0, 0.25); 
+    border: 0.50px black solid
+    animation
+}

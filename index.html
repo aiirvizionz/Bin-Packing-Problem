@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon"
+        href="https://img.icons8.com/external-itim2101-lineal-color-itim2101/64/external-containers-logistics-itim2101-lineal-color-itim2101.png"
+        type="image/x-icon">
+    <title>Bin Packing Problem</title>
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <section>
+
+        <!-- Contenedor para las pilas de contenedores a agregar -->
+        <div class="binToAdd">
+
+            <div class="containerToAdd"><div draggable="true" ondragstart="onDragStart(event);" id="draggable-1" class="figure1">Arrastrable</div></div>
+            <div class="containerToAdd"><div draggable="true" ondragstart="onDragStart(event);" id="draggable-2" class="figure2">Arrastrable</div></div>
+            <div class="containerToAdd"><div draggable="true" ondragstart="onDragStart(event);" id="draggable-3" class="figure3">Arrastrable</div></div>
+            <div class="containerToAdd"><div draggable="true" ondragstart="onDragStart(event);" id="draggable-4" class="figure4">Arrastrable</div></div>
+            <div class="containerToAdd"><div draggable="true" ondragstart="onDragStart(event);" id="draggable-5" class="figure5">Arrastrable</div></div>
+            <div class="containerToAdd"><div draggable="true" ondragstart="onDragStart(event);"  id="draggable-6" class="figure6">Arrastrable</div></div>
+
+        </div>
+
+        <!-- Contenedor padre para la sección de apilado -->
+        <div class="binFatherToReceive">
+
+            <!-- Mensaje para el contenedor que recibe -->
+            <div class="receiveMsg">
+               <span style="color: #FF0000; font-size: 40px; font-family: Franklin Gothic Heavy; font-weight: 400; word-wrap: break-word">Objetivo</span> 
+               <span class="msg">: Colocar los articulos en la menor cantidad de contenedores posibles.</span>
+            </div>
+
+
+            <div class="binChildToReceive">
+
+                <div ondragover="onDragOver(event);" ondrop="onDrop(event);" class="bin1"></div>
+                <div ondragover="onDragOver(event);" ondrop="onDrop(event);" class="bin2"></div>
+                <div ondragover="onDragOver(event);" ondrop="onDrop(event);" class="bin3"></div>
+                <div ondragover="onDragOver(event);" ondrop="onDrop(event);" class="bin4"></div>
+
+                <div class="btnSolution">Ver solucion</div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</body>
+
+</html>
