@@ -8,23 +8,68 @@
         href="https://img.icons8.com/external-itim2101-lineal-color-itim2101/64/external-containers-logistics-itim2101-lineal-color-itim2101.png"
         type="image/x-icon">
     <title>Bin Packing Problem</title>
-    <script src="app.js"></script>
+    <script src="drag-and-drop.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+    <head>
+
+        <div class="menu-exit" id="div-menu-exit">
+            <label class="hamburger" for="cb-menu">
+                <input type="checkbox" id="cb-menu">
+                <svg viewBox="0 0 32 32">
+                    <path class="line line-top-bottom"
+                        d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22">
+                    </path>
+                    <path class="line" d="M7 16 27 16"></path>
+                </svg>
+            </label>
+        </div>
+
+    </head>
+
     <section>
 
-        <!-- Contenedor para las pilas de contenedores a agregar -->
-        <div class="binToAdd">
+        <!-- Pantallas de instrucciones y presentacion del juego -->
+        <div class="slideshow-container" id="intro">
 
-            <div class="containerToAdd"><div draggable="true" ondragstart="onDragStart(event);" id="draggable-1" class="figure1">Arrastrable</div></div>
-            <div class="containerToAdd"><div draggable="true" ondragstart="onDragStart(event);" id="draggable-2" class="figure2">Arrastrable</div></div>
-            <div class="containerToAdd"><div draggable="true" ondragstart="onDragStart(event);" id="draggable-3" class="figure3">Arrastrable</div></div>
-            <div class="containerToAdd"><div draggable="true" ondragstart="onDragStart(event);" id="draggable-4" class="figure4">Arrastrable</div></div>
-            <div class="containerToAdd"><div draggable="true" ondragstart="onDragStart(event);" id="draggable-5" class="figure5">Arrastrable</div></div>
-            <div class="containerToAdd"><div draggable="true" ondragstart="onDragStart(event);"  id="draggable-6" class="figure6">Arrastrable</div></div>
+            <!-- Instrucciones -->
+            <div class="mySlides fade">
+                <div class="numbertext">1 / 4</div>
+                <img src="img/main-screen.png" style="width:100%">
+                <div class="text">Introduccion</div>
+            </div>
+
+            <div class="mySlides fade">
+                <div class="numbertext">2 / 4</div>
+                <img src="img/instructions-screen.png" style="width:100%">
+                <div class="text">Instrucciones</div>
+            </div>
+
+            <div class="mySlides fade">
+                <div class="numbertext">3 / 4</div>
+                <img src="img/game-case-screen.png" style="width:100%">
+                <div class="text">Caso del juego</div>
+            </div>
+
+            <div class="mySlides fade">
+                <div class="numbertext">4 / 4</div>
+                <img src="img/rules-screen.png" style="width:100%">
+                <div class="text">Reglas del juego</div>
+            </div>
+
+            <!-- Next and previous buttons -->
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+
+
+        <!-- Contenedor para las pilas de contenedores a agregar -->
+        <div class="carga" ondrop="onDrop(event);" ondragover="allowDrop(event)" id="binToAdd">
+
+            <!-- Figuras creadas en JavaScript a elección del usuario -->
 
         </div>
 
@@ -32,20 +77,21 @@
         <div class="binFatherToReceive">
 
             <!-- Mensaje para el contenedor que recibe -->
-            <div class="receiveMsg">
-               <span style="color: #FF0000; font-size: 40px; font-family: Franklin Gothic Heavy; font-weight: 400; word-wrap: break-word">Objetivo</span> 
-               <span class="msg">: Colocar los articulos en la menor cantidad de contenedores posibles.</span>
+            <div class="info-game">
+                <p class="msg" id="figures-created-info"></p>
+                <p class="msg" id="figures-dropped-info"></p>
+                <p class="msg" id="used-containers-info"></p>
+                <p class="msg" id="cash-info"></p>
             </div>
 
 
             <div class="binChildToReceive">
 
-                <div ondragover="onDragOver(event);" ondrop="onDrop(event);" class="bin1"></div>
-                <div ondragover="onDragOver(event);" ondrop="onDrop(event);" class="bin2"></div>
-                <div ondragover="onDragOver(event);" ondrop="onDrop(event);" class="bin3"></div>
-                <div ondragover="onDragOver(event);" ondrop="onDrop(event);" class="bin4"></div>
+                <button class="btnDeleteBin" onclick="">Eliminar contenedor</button>
 
-                <div class="btnSolution">Ver solucion</div>
+                <div ondragover="onDragOver(event);" ondrop="onDrop(event);" class="bin"></div>
+
+                <button class="btnAddBin">Agregar contenedor</button>
 
             </div>
 
@@ -54,5 +100,6 @@
     </section>
 
 </body>
+<script src="app.js"></script>
 
 </html>
