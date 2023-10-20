@@ -38,25 +38,25 @@
             <!-- Instrucciones -->
             <div class="mySlides fade">
                 <div class="numbertext">1 / 4</div>
-                <img src="img/main-screen.png" style="width:100%">
+                <img src="img/main-screen.png">
                 <div class="text">Introduccion</div>
             </div>
 
             <div class="mySlides fade">
                 <div class="numbertext">2 / 4</div>
-                <img src="img/instructions-screen.png" style="width:100%">
+                <img src="img/instructions-screen.png">
                 <div class="text">Instrucciones</div>
             </div>
 
             <div class="mySlides fade">
                 <div class="numbertext">3 / 4</div>
-                <img src="img/game-case-screen.png" style="width:100%">
+                <img src="img/game-case-screen.png">
                 <div class="text">Caso del juego</div>
             </div>
 
             <div class="mySlides fade">
                 <div class="numbertext">4 / 4</div>
-                <img src="img/rules-screen.png" style="width:100%">
+                <img src="img/rules-screen.png">
                 <div class="text">Reglas del juego</div>
             </div>
 
@@ -78,6 +78,19 @@
 
             <!-- Mensaje para el contenedor que recibe -->
             <div class="info-game">
+                <div class="amountsDiv">
+                    <div>
+                        <label for="inputFigures" class="msg">N° articulos: </label>
+                        <input type="number" name="figures" id="inputFigures">
+                        <button class="btnAmount" id="btnFigures">Aplicar</button>
+                    </div>
+
+                    <div>
+                        <label for="inputBins" class="msg">N° contenedores: </label>
+                        <input type="number" name="bins" id="inputBins">
+                        <button class="btnAmount" id="btnBins">Aplicar</button>
+                    </div>
+                </div>
                 <p class="msg" id="figures-created-info"></p>
                 <p class="msg" id="figures-dropped-info"></p>
                 <p class="msg" id="used-containers-info"></p>
@@ -89,7 +102,7 @@
 
                 <button class="btnDeleteBin" onclick="">Eliminar contenedor</button>
 
-                <div ondragover="onDragOver(event);" ondrop="onDrop(event);" class="bin"></div>
+                <!-- Contenedor para las pilas de contenedores a agregar -->
 
                 <button class="btnAddBin">Agregar contenedor</button>
 
