@@ -97,7 +97,7 @@ const btnBins = document.getElementById("btnBins");
 
 btnBins.addEventListener("click", function () {
 
-    if (cash >= 10) {
+    if (cash >= 10 && inputBins.value <= 10) {
         for (let i = 1; i <= inputBins.value; i++) {
             const newBin = document.createElement('div');
             newBin.setAttribute('class', 'bin');
@@ -112,7 +112,7 @@ btnBins.addEventListener("click", function () {
             cashInfo.textContent = 'Dinero disponible: $' + cash;
         }
     } else {
-        alert("No se pueden agregar más contenedores.");
+        alert("Excede el limite de dinero o el numero de contenedores.");
         return;
     }
 });
