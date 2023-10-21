@@ -58,6 +58,8 @@ const colorsAssigned = [];
 
 const inputFigures = document.getElementById("inputFigures");
 const btnFigures = document.getElementById("btnFigures");
+const binToAdd = document.querySelector('.carga');
+const containerBins = document.querySelector(".binChildToReceive");
 
 
 btnFigures.addEventListener("click", function () {
@@ -79,7 +81,7 @@ btnFigures.addEventListener("click", function () {
             newDiv.style.height = randomHeight + 'px';
             newDiv.textContent = randomHeight;
 
-            const binToAdd = document.querySelector('.carga');
+            
             binToAdd.appendChild(newDiv);
 
             heights.push(randomHeight);
@@ -89,7 +91,15 @@ btnFigures.addEventListener("click", function () {
             figuresCreatedInfo.textContent = 'Cantidad de figuras creadas: ' + figuresCreated;
         }
     }
-    console.log(inputFigures.value);
+
+    if (binToAdd.childElementCount > 0) {
+        btnFigures.disabled = true;
+        btnFigures.style.cursor = 'not-allowed';
+        inputBins.disabled = false;
+        inputFigures.disabled = true;
+    }
+
+
 });
 
 const inputBins = document.getElementById("inputBins");
@@ -106,15 +116,26 @@ btnBins.addEventListener("click", function () {
 
             containerBins.appendChild(newBin);
 
-            console.log(newBin);
-
             cash = cash - 10;
             cashInfo.textContent = 'Dinero disponible: $' + cash;
+
+            const binsCreated = containerBins.childElementCount - 1;
+            binsInfo.textContent = 'Cantidad de contenedores: ' + binsCreated;
+
+            console.log(binsInfo);
         }
+
     } else {
         alert("Excede el limite de dinero o el numero de contenedores.");
         return;
     }
+
+    if (containerBins.childElementCount > 1) {
+        btnBins.disabled = true;
+        btnBins.style.cursor = 'not-allowed';
+        inputBins.disabled = true;
+    }
+
 });
 
 
@@ -142,15 +163,16 @@ const binsInfo = document.getElementById("used-containers-info");
 figuresCreatedInfo.textContent = 'Cantidad de figuras creadas: ';
 cashInfo.textContent = 'Dinero disponible: $' + cash;
 //figuresInfo.textContent = 'Cantidad de figuras acomodadas: ' + figuresInfoDropped;
-//binsInfo.textContent = 'Cantidad de contenedores usados: '; 
+binsInfo.textContent = 'Cantidad de contenedores: ';
 
 
 //Creacion de nuevos contenedores "bin" usando boton
 const btnAddBin = document.querySelector(".btnAddBin");
-const containerBins = document.querySelector(".binChildToReceive");
 var indexBins = 1;
 
-
+btnAddBin.addEventListener("click", function () {
+    location.reload();
+});
 
 
 
