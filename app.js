@@ -81,7 +81,7 @@ btnFigures.addEventListener("click", function () {
             newDiv.style.height = randomHeight + 'px';
             newDiv.textContent = randomHeight;
 
-            
+
             binToAdd.appendChild(newDiv);
 
             heights.push(randomHeight);
@@ -102,6 +102,7 @@ btnFigures.addEventListener("click", function () {
 
 });
 
+var bins = [];
 const inputBins = document.getElementById("inputBins");
 const btnBins = document.getElementById("btnBins");
 
@@ -113,6 +114,7 @@ btnBins.addEventListener("click", function () {
             newBin.setAttribute('class', 'bin');
             newBin.setAttribute('ondragover', 'onDragOver(event);');
             newBin.setAttribute('ondrop', 'onDrop(event);');
+            newBin.setAttribute('id', 'bin');
 
             containerBins.appendChild(newBin);
 
@@ -122,7 +124,7 @@ btnBins.addEventListener("click", function () {
             const binsCreated = containerBins.childElementCount - 1;
             binsInfo.textContent = 'Cantidad de contenedores: ' + binsCreated;
 
-            console.log(binsInfo);
+            bins.push(newBin);
         }
 
     } else {
@@ -137,11 +139,6 @@ btnBins.addEventListener("click", function () {
     }
 
 });
-
-
-function onDragStart(event) {
-    event.dataTransfer.setData("text/plain", event.target.id);
-}
 
 
 console.log(heights);
@@ -168,7 +165,6 @@ binsInfo.textContent = 'Cantidad de contenedores: ';
 
 //Creacion de nuevos contenedores "bin" usando boton
 const btnAddBin = document.querySelector(".btnAddBin");
-var indexBins = 1;
 
 btnAddBin.addEventListener("click", function () {
     location.reload();
@@ -195,54 +191,39 @@ function onDragOver(event) {
     event.preventDefault();
 }
 
-// Contador para el número de capacidad ocupada en el contenedor
-let elementosEnContenedor = 0;
-// Límite de capacidad del contenedor
-const limiteCapacidad = 500;
-
+let limiteBin = 500;
+const containers = document.querySelectorAll('.bin');
 
 function onDrop(event) {
-    const id = event
-        .dataTransfer
-        .getData('text');
-
-    let currentDivIndex = 0; // Índice del div actual que se debe mostrar
-
-    const binToAdd = document.querySelector('.carga');
-    const containers = binToAdd.querySelectorAll('.containerToAdd');
+    const id = event.dataTransfer.getData('text');
     const draggableElement = document.getElementById(id);
-
     const dropzone = event.target;
 
-    if (draggableElement.textContent <= limiteCapacidad) {
+    const currentContainer = dropzone.closest('.bin');
+    const currentBinLimit = limiteBin;
 
+    const figuresInsideBin = currentContainer.querySelectorAll('.figure');
+    let currentBinUsedSpace = 0;
 
-        if (draggableElement && containers[currentDivIndex]) {
+    figuresInsideBin.forEach((figure) => {
+        currentBinUsedSpace += parseInt(figure.textContent, 10);
+    });
 
-
-
-            if (currentDivIndex < containers.length) {
-                binToAdd.appendChild(containers[currentDivIndex]);
-
-                currentDivIndex++;
-                figuresInfoDropped++;
-
-                limiteCapacidad = limiteCapacidad - draggableElement.textContent;
-                console.log(limiteCapacidad);
-
-
-            }
-        }
-
+    if (currentBinUsedSpace + parseInt(draggableElement.textContent, 10) <= currentBinLimit) {
         dropzone.appendChild(draggableElement);
-
-
-        event
-            .dataTransfer
-            .clearData();
+        event.dataTransfer.clearData();
+    } else {
+        alert("Excede el límite de espacio del contenedor.");
     }
 }
 
 function allowDrop(event) {
     event.preventDefault();
 }
+
+// Restaura la capacidad total del contenedor cuando todas las figuras se eliminan
+containers.forEach((container) => {
+    container.addEventListener('DOMNodeRemoved', () => {
+        limiteBin = 500;
+    });
+});
