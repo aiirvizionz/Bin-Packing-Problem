@@ -14,7 +14,7 @@ body {
 }
 
 ::-webkit-scrollbar {
-    width: 0px;
+    width: 5px;
 }
 
 section {
@@ -43,7 +43,7 @@ img {
     display: flex;
     align-items: center;
     z-index: 3;
-    visibility: hidden;
+    visibility: visible;
 }
 
 .slideshow-container {
@@ -53,7 +53,7 @@ img {
     left: 0;
     margin: auto;
     z-index: 5;
-    transition: 0.5s;
+    transition: 0.2s;
 }
 
 /* Hide the images by default */
@@ -73,7 +73,7 @@ img {
     color: white;
     font-weight: bold;
     font-size: 18px;
-    transition: 0.6s ease;
+    transition: 0.2s ease;
     border-radius: 0 3px 3px 0;
     user-select: none;
 }
@@ -330,6 +330,7 @@ input {
 }
 
 .bin {
+    min-width: 100px;
     width: 100px;
     height: 500px;
     background: #E8E8E8;
@@ -343,6 +344,7 @@ input {
     flex-direction: column-reverse; /* Agrega esta línea */
     justify-content: flex-start; /* Agrega esta línea */
     margin: 40px;
+    overflow: hidden;
 }
 
 /*.btnDeleteBin {
@@ -359,8 +361,8 @@ input {
 .btnReset {
     border: 2px solid black;
     position: absolute;
-    bottom: 2%;
-    right: 1%;
+    bottom: 3%;
+    right: 2%;
     z-index: 2;
     width: 3rem;
     height: 3rem;

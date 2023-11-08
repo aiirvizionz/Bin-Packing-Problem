@@ -120,15 +120,6 @@ cashInfo.textContent = 'Dinero disponible: $' + cash;
 binsInfo.textContent = 'Cantidad de contenedores: ';
 
 
-//Creacion de nuevos contenedores "bin" usando boton
-const btnReset = document.querySelector(".btnReset");
-
-btnReset.addEventListener("click", function () {
-    location.reload();
-});
-
-
-
 //Funcion que cambia atributos de CCS cuando se arrastra un elemento
 function onDragStart(event) {
     event

@@ -13,6 +13,14 @@ checkbox.addEventListener("change", function () {
     }
 })
 
+//Creacion de nuevos contenedores "bin" usando boton
+const btnReset = document.querySelector(".btnReset");
+
+btnReset.addEventListener("click", function () {
+    location.reload();
+    checkbox.checked = false;
+    infoRules.style.visibility = "hidden";
+});
 
 //Carrusel de imagenes de instrucciones del juego
 
