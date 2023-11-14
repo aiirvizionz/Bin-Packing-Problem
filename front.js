@@ -17,9 +17,21 @@ checkbox.addEventListener("change", function () {
 const btnReset = document.querySelector(".btnReset");
 
 btnReset.addEventListener("click", function () {
+    // Establecer un valor en el almacenamiento local para indicar que se deben aplicar propiedades
+    localStorage.setItem("aplicarPropiedades", "true");
     location.reload();
-    checkbox.checked = false;
-    infoRules.style.visibility = "hidden";
+});
+
+window.addEventListener("load", function () {
+    // Verificar si se debe aplicar propiedades según el valor en el almacenamiento local
+    const aplicar = localStorage.getItem("aplicarPropiedades");
+    if (aplicar === "true") {
+        // Código para aplicar propiedades después de la recarga
+        infoRules.style.visibility = "hidden";
+        checkbox.checked = false;
+        // Restablecer el valor en el almacenamiento local
+        localStorage.setItem("aplicarPropiedades", "false");
+    }
 });
 
 //Carrusel de imagenes de instrucciones del juego

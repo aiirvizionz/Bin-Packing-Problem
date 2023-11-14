@@ -36,22 +36,22 @@
 
             <!-- Instrucciones -->
             <div class="mySlides fade">
-                <img src="img/main-screen.png">
+                <img class="imgInfo" src="img/main-screen.png">
                 <div class="text">Introduccion</div>
             </div>
 
             <div class="mySlides fade">
-                <img src="img/instructions-screen.png">
+                <img class="imgInfo"  src="img/instructions-screen.png">
                 <div class="text">Instrucciones</div>
             </div>
 
             <div class="mySlides fade">
-                <img src="img/game-case-screen.png">
+                <img class="imgInfo"  src="img/game-case-screen.png">
                 <div class="text">Caso del juego</div>
             </div>
 
             <div class="mySlides fade">
-                <img src="img/rules-screen.png">
+                <img class="imgInfo"  src="img/rules-screen.png">
                 <div class="text">Reglas del juego</div>
             </div>
 
@@ -86,18 +86,38 @@
                         <button class="btnAmount" id="btnBins">Aplicar</button>
                     </div>
                 </div>
-                <p class="msg" id="figures-created-info"></p>
-                <p class="msg" id="figures-dropped-info"></p>
-                <p class="msg" id="used-containers-info"></p>
-                <p class="msg" id="cash-info"></p>
+                <div class="info-Div">
+                    <p class="msg" id="figures-created-info"></p>
+                    <p class="msg" id="used-containers-info"></p>
+                    <p class="msg" id="figures-dropped-info"></p>
+                    <p class="msg" id="cash-info"></p>
+                </div>
+                <div class="btnResetDiv">
+                    <button class="btnReset"><img src="img/reset.png" alt="Reset game" class="reset-img"></button>
+                </div>
             </div>
 
 
             <div class="binChildToReceive">
 
                 <!-- Aqui se agregarán los contenedores creados -->
-                
-                <button class="btnReset"><img src="img/reset.png" alt="Reset game" class="reset-img"></button> 
+
+            </div>
+
+        </div>
+
+
+        <!-- Pantalla para alertas -->
+
+        <div class="alertsDiv" id="alertsDiv">
+
+            <div id="alert" class="alert">
+
+                <h3 class="alertTitulo" id="alertTitulo">Alerta</h3>
+
+                <p class="alertMsg" id="alertMsg"></p>
+
+                <button class="btnAmount" id="btnAlertAccept">Aceptar</button>
 
             </div>
 
