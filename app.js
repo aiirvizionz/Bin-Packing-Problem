@@ -66,6 +66,11 @@ const btnBins = document.getElementById("btnBins");
 
 btnBins.addEventListener("click", function () {
 
+    if (isNaN(inputBins.value) || inputBins.value <= 0) {
+        alertsDiv.style.visibility = "visible";
+        alertMsg.textContent = "Ingrese un número válido mayor que cero.";
+    }
+
     if (cash >= 10 && inputBins.value <= 10) {
         for (let i = 0; i < inputBins.value; i++) {
             const newBin = document.createElement('div');
@@ -84,8 +89,8 @@ btnBins.addEventListener("click", function () {
 
             bins.push(newBin);
         }
-
-    } else {
+    }
+    else {
         alertsDiv.style.visibility = "visible";
         alertMsg.textContent = "Excede el limite de dinero disponible.";
     }
@@ -166,6 +171,32 @@ function onDrop(event) {
         alertMsg.textContent = "Excede el límite de espacio en el contenedor.";
     }
 }
+
+//Permitir cambiar el orden de los productos dentro del contenedor
+const carga = document.querySelector('.carga');
+let draggedElement = null;
+
+carga.addEventListener('dragstart', (event) => {
+    draggedElement = event.target;
+});
+
+carga.addEventListener('dragover', (event) => {
+    event.preventDefault();
+});
+
+carga.addEventListener('drop', handleDrop);
+
+function handleDrop(event) {
+    event.preventDefault();
+    const target = event.target;
+
+    if (target.classList.contains('figure')) {
+        carga.insertBefore(draggedElement, target);
+    } else {
+        carga.appendChild(draggedElement);
+    }
+}
+
 
 function allowDrop(event) {
     event.preventDefault();

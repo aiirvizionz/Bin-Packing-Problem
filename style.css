@@ -67,7 +67,7 @@ section {
     left: 0;
     margin: auto;
     z-index: 5;
-    transition: 0.2s;
+    /*transition: 0.2s;*/
 }
 
 /* Hide the images by default */
@@ -136,7 +136,7 @@ section {
 /* Fading animation */
 .fade {
     animation-name: fade;
-    animation-duration: 0.5s;
+    /*animation-duration: 0.5s;*/
 }
 
 @keyframes fade {
