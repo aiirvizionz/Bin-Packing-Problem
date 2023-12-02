@@ -49,6 +49,11 @@ body {
     z-index: 6;
 }
 
+.menu-exit:hover {
+    cursor: pointer;
+    background-color: #e8e8e8;
+}
+
 .hamburger {
     cursor: pointer;
 }
