@@ -8,7 +8,7 @@
         href="https://img.icons8.com/external-itim2101-lineal-color-itim2101/64/external-containers-logistics-itim2101-lineal-color-itim2101.png"
         type="image/x-icon">
     <title>Bin Packing Problem</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="stylenew.css">
 </head>
 
 <body>
@@ -29,101 +29,98 @@
 
     </head>
 
-    <section>
 
-        <!-- Pantallas de instrucciones y presentacion del juego -->
-        <div class="slideshow-container" id="intro">
-
-            <!-- Instrucciones -->
-            <div class="mySlides fade">
-                <img class="imgInfo" src="img/main-screen.png">
-                <div class="text">Introduccion</div>
+    <!-- Mensaje para el contenedor que recibe -->
+    <div class="info-game">
+        <div class="amountsDiv">
+            <div>
+                <label for="inputFigures" class="msg">N° articulos: </label>
+                <input type="number" name="figures" id="inputFigures">
+                <button class="btnAmount" id="btnFigures">Aplicar</button>
             </div>
 
-            <div class="mySlides fade">
-                <img class="imgInfo"  src="img/instructions-screen.png">
-                <div class="text">Instrucciones</div>
+            <div>
+                <label for="inputBins" class="msg">N° contenedores: </label>
+                <input type="number" name="bins" id="inputBins" disabled>
+                <button class="btnAmount" id="btnBins">Aplicar</button>
             </div>
-
-            <div class="mySlides fade">
-                <img class="imgInfo"  src="img/game-case-screen.png">
-                <div class="text">Caso del juego</div>
-            </div>
-
-            <div class="mySlides fade">
-                <img class="imgInfo"  src="img/rules-screen.png">
-                <div class="text">Reglas del juego</div>
-            </div>
-
-            <!-- Next and previous buttons -->
-            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-            <a class="next" onclick="plusSlides(1)">&#10095;</a>
         </div>
+        <div class="info-Div">
+            <p class="msg" id="figures-created-info"></p>
+            <p class="msg" id="used-containers-info"></p>
+            <p class="msg" id="figures-dropped-info"></p>
+            <p class="msg" id="cash-info"></p>
+        </div>
+        <div class="btnResetDiv">
+            <button class="btnReset"><img src="img/reset.png" alt="Reset game" class="reset-img"></button>
+        </div>
+    </div>
 
 
-        <!-- Contenedor para las pilas de contenedores a agregar -->
+    <!-- Seccion para productos creados y contenedores creados -->
+    <div class="container">
+
         <div class="carga" ondrop="onDrop(event);" ondragover="allowDrop(event)" id="binToAdd">
 
             <!-- Figuras creadas en JavaScript a elección del usuario -->
 
         </div>
 
-        <!-- Contenedor padre para la sección de apilado -->
-        <div class="binFatherToReceive">
 
-            <!-- Mensaje para el contenedor que recibe -->
-            <div class="info-game">
-                <div class="amountsDiv">
-                    <div>
-                        <label for="inputFigures" class="msg">N° articulos: </label>
-                        <input type="number" name="figures" id="inputFigures">
-                        <button class="btnAmount" id="btnFigures">Aplicar</button>
-                    </div>
+        <div class="containerBins">
 
-                    <div>
-                        <label for="inputBins" class="msg">N° contenedores: </label>
-                        <input type="number" name="bins" id="inputBins" disabled>
-                        <button class="btnAmount" id="btnBins">Aplicar</button>
-                    </div>
-                </div>
-                <div class="info-Div">
-                    <p class="msg" id="figures-created-info"></p>
-                    <p class="msg" id="used-containers-info"></p>
-                    <p class="msg" id="figures-dropped-info"></p>
-                    <p class="msg" id="cash-info"></p>
-                </div>
-                <div class="btnResetDiv">
-                    <button class="btnReset"><img src="img/reset.png" alt="Reset game" class="reset-img"></button>
-                </div>
-            </div>
-
-
-            <div class="binChildToReceive">
-
-                <!-- Aqui se agregarán los contenedores creados -->
-
-            </div>
+            <!-- Aqui se agregarán los contenedores creados -->
 
         </div>
 
+    </div>
 
-        <!-- Pantalla para alertas -->
 
-        <div class="alertsDiv" id="alertsDiv">
+    <!-- Pantalla para alertas -->
 
-            <div id="alert" class="alert">
+    <div class="alertsDiv" id="alertsDiv">
 
-                <h3 class="alertTitulo" id="alertTitulo">Alerta</h3>
+        <div id="alert" class="alert">
 
-                <p class="alertMsg" id="alertMsg"></p>
+            <h3 class="alertTitulo" id="alertTitulo">Alerta</h3>
 
-                <button class="btnAmount" id="btnAlertAccept">Aceptar</button>
+            <p class="alertMsg" id="alertMsg"></p>
 
-            </div>
+            <button class="btnAmount" id="btnAlertAccept">Aceptar</button>
 
         </div>
 
-    </section>
+    </div>
+
+    <!-- Pantallas de instrucciones y presentacion del juego -->
+    <div class="slideshow-container" id="intro">
+
+        <!-- Instrucciones -->
+        <div class="mySlides fade">
+            <img class="imgInfo" src="img/main-screen.png">
+            <div class="text">Introduccion</div>
+        </div>
+
+        <div class="mySlides fade">
+            <img class="imgInfo" src="img/instructions-screen.png">
+            <div class="text">Instrucciones</div>
+        </div>
+
+        <div class="mySlides fade">
+            <img class="imgInfo" src="img/game-case-screen.png">
+            <div class="text">Caso del juego</div>
+        </div>
+
+        <div class="mySlides fade">
+            <img class="imgInfo" src="img/rules-screen.png">
+            <div class="text">Reglas del juego</div>
+        </div>
+
+        <!-- Next and previous buttons -->
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+
 
 </body>
 <script src="app.js"></script>

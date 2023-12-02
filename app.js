@@ -16,7 +16,7 @@ const colorsAssigned = [];
 const inputFigures = document.getElementById("inputFigures");
 const btnFigures = document.getElementById("btnFigures");
 const binToAdd = document.querySelector('.carga');
-const containerBins = document.querySelector(".binChildToReceive");
+const containerBins = document.querySelector(".containerBins");
 
 
 btnFigures.addEventListener("click", function () {
@@ -57,7 +57,9 @@ btnFigures.addEventListener("click", function () {
         inputFigures.disabled = true;
     }
 
-
+    console.log(heights);
+    console.log(colorsAssigned);
+    
 });
 
 var bins = [];
@@ -102,13 +104,6 @@ btnBins.addEventListener("click", function () {
     }
 
 });
-
-
-console.log(heights);
-console.log(colorsAssigned);
-
-
-
 
 //Informacion del juego
 const divInfoGame = document.querySelector(".info-game");
