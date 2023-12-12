@@ -140,6 +140,8 @@ body {
     text-align: center;
     display: flex;
     border: #000000 1px solid;
+    display: flex;
+    flex-direction: row-reverse;
 }
 
 .amountsDiv {
@@ -229,8 +231,17 @@ input {
 }
 
 .btnResetDiv {
-    align-self: center;
-    margin: 0rem;
+    position: fixed;
+    right: 15px;
+    top: 15px;
+    background-color: #f6f6f6;
+    border-radius: 20px;
+    border: solid 2px black;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .reset-img {
@@ -529,14 +540,11 @@ input {
     .containerBins {
         width: 100%;
         min-height: 580px;
-        margin: auto;
         display: flex;
         flex-direction: row;
         overflow: hidden;
-        padding: 20px 20px;
-        /* Añade un espacio interno al contenedor padre para los .bin */
         box-sizing: border-box;
-        /* Asegura que el padding se incluya en el ancho total */
+        align-items: flex-end;
     }
 
     /* Mensajes informativos sobre el juego*/
@@ -597,9 +605,8 @@ input {
     }
 
     .msg {
-        margin: auto 20px;
         color: black;
-        font-size: 1.1rem;
+        font-size: 1.2rem;
         font-family: Franklin Gothic Heavy;
         font-weight: 400;
         word-wrap: break-word;
@@ -630,7 +637,8 @@ input {
     }
 
     .btnReset {
-        border: 2px solid black;
+        background-color: transparent;
+        border: none;
         z-index: 2;
         width: 3rem;
         height: 3rem;
@@ -844,15 +852,18 @@ input {
     @media screen and (max-width: 768px) {
 
         .menu-exit {
+            position: fixed;
             top: 0;
             left: 0;
             border: none;
             border-radius: 0;
             background-color: transparent;
+            width: 40px;
+            height: 40px;
         }
 
         .container {
-            height: 80%;
+            height: 90%;
             /* Cambia la altura para adaptarse al contenido */
         }
 
@@ -869,6 +880,10 @@ input {
             /* Elimina el borde */
         }
 
+        .container{
+            height: auto;
+        }
+
         .containerBins {
             height: auto;
             /* Ajusta la altura según el contenido */
@@ -876,15 +891,31 @@ input {
             /* Agrega desplazamiento horizontal si es necesario */
         }
 
+        button{
+            font-size: 0.7rem;
+            padding: 0.2rem 0.4rem;
+        }
+
+        .btnAmount{
+            padding: 0.4rem 0.6rem;
+            margin: 0 0.5rem;
+        }
+
+        input{
+            font-size: 0.8rem;
+            width: 2rem;
+        }
+
+
         .info-game {
-            height: 20%;
-            /* Ajusta la altura según el contenido */
             flex-direction: column;
+            align-items: center;
+            justify-content: center;
             /* Cambia la dirección del contenido */
         }
 
         .msg {
-            font-size: 1rem;
+            font-size: 0.7rem;
         }
 
         .amountsDiv {
@@ -898,12 +929,33 @@ input {
         }
 
         .info-Div {
-            width: 100%;
+            width: 80%;
             /* Ocupa todo el ancho disponible */
         }
 
         .btnResetDiv {
-            align-self: flex-start;
+            position: fixed;
+            right: 0;
+            top: 0;
+            width: 40px;
+            height: 40px;
+            border: none;
+            border-radius: 0;
+            background-color: transparent;
+        }
+
+        .btnReset{
+            width: 10%;
+            height: 40px;
+        }
+
+        .reset-img{
+            width: 25px;
+            height: 25px;
+        }
+
+        .carga {
+            height: auto;
         }
     }
 }
