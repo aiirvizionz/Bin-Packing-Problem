@@ -57,9 +57,9 @@ btnFigures.addEventListener("click", function () {
         inputFigures.disabled = true;
     }
 
+    //console.log(colorsAssigned);
     console.log(heights);
-    console.log(colorsAssigned);
-    
+
 });
 
 var bins = [];
@@ -101,6 +101,8 @@ btnBins.addEventListener("click", function () {
         btnBins.disabled = true;
         btnBins.style.cursor = 'not-allowed';
         inputBins.disabled = true;
+        btnExtraBin.disabled = false;
+        btnExtraBin.style.cursor = 'pointer';
     }
 
 });
@@ -120,6 +122,37 @@ figuresInfo.textContent = 'Capacidad por contenedor: 500';
 binsInfo.textContent = 'N° contenedores: ';
 
 
+// Boton para agregar contenedor extra (A DOBLE DE PRECIO)
+const btnExtraBin = document.querySelector('.btnExtraBin')
+
+btnExtraBin.disabled = true;
+btnExtraBin.style.cursor = 'not-allowed';
+
+btnExtraBin.addEventListener('click', function () {
+    if (cash >= 20) {
+        const newBin = document.createElement('div');
+        newBin.setAttribute('class', 'bin');
+        newBin.setAttribute('ondragover', 'onDragOver(event);');
+        newBin.setAttribute('ondrop', 'onDrop(event);');
+        newBin.setAttribute('id', 'bin');
+
+        containerBins.appendChild(newBin);
+
+        cash = cash - 20;
+        cashInfo.textContent = '$ disponible: $' + cash;
+
+        const binsCreated = containerBins.childElementCount;
+        binsInfo.textContent = 'N° contenedores: ' + binsCreated;
+
+        bins.push(newBin);
+    }
+    else {
+        alertsDiv.style.visibility = "visible";
+        alertMsg.textContent = "Excede el limite de dinero disponible.";
+    }
+});
+
+
 //Funcion que cambia atributos de CCS cuando se arrastra un elemento
 function onDragStart(event) {
     event
@@ -129,10 +162,10 @@ function onDragStart(event) {
         .currentTarget
         .style
         .opacity = '0.7';
-    /* event
-     .currentTarget
-     .style
-     .scale= '1.5'; */
+    event
+        .currentTarget
+        .style
+        .border = 'none';
 }
 
 function onDragOver(event) {
@@ -211,4 +244,88 @@ const btnAlertAccept = document.getElementById("btnAlertAccept");
 
 btnAlertAccept.addEventListener("click", function () {
     alertsDiv.style.visibility = "hidden";
+});
+
+
+// Quicksort para ordenar las figuras de mayor a menor
+function quicksort(arr) {
+    if (arr.length <= 1) {
+        return arr;
+    }
+
+    // Elegir un pivote (puede ser el primer elemento)
+    const pivot = arr[0];
+
+    // Dividir el array en dos sub-arrays: elementos menores que el pivote y elementos mayores que el pivote
+    const left = [];
+    const right = [];
+
+    for (let i = 1; i < arr.length; i++) {
+        if (arr[i] < pivot) {
+            left.push(arr[i]);
+        } else {
+            right.push(arr[i]);
+        }
+    }
+
+    // Recursivamente ordenar los sub-arrays
+    return quicksort(left).concat(pivot, quicksort(right));
+}
+
+
+// Boton para la funcion de solucion
+const btnSolution = document.querySelector('.btnSolution');
+
+btnSolution.addEventListener('click', function () {
+    const sortedArray = quicksort(heights);
+    console.log(sortedArray);
+
+    // Ordenar las figuras de mayor a menor dentro del div de carga
+    const figures = document.querySelectorAll('.figure');
+    const figuresArray = Array.from(figures);
+
+    figuresArray.sort(function (a, b) {
+        return b.textContent - a.textContent;
+    });
+
+    figuresArray.forEach((figure) => {
+        carga.appendChild(figure);
+    });
+
+    // Asignar las figuras en orden de mayor a menor dentro de los contenedores que tengan espacio suficiente para cada una
+
+    // Limpiar los contenedores y devolver las figuras dentro de los contenedores a la seccion de carga
+    bins.forEach((bin) => {
+        bin.innerHTML = '';
+    });
+
+
+    figuresArray.forEach((figure) => {
+        bins.forEach((bin) => {
+            const figuresInsideBin = bin.querySelectorAll('.figure');
+            let currentBinUsedSpace = 0;
+
+            figuresInsideBin.forEach((figure) => {
+                currentBinUsedSpace += parseInt(figure.textContent, 10);
+            });
+
+            if (currentBinUsedSpace + parseInt(figure.textContent, 10) <= limiteBin) {
+                bin.appendChild(figure);
+            }
+        });
+
+        // Alertas de casos para la solución
+        if (figure.parentNode === carga) {
+            alertsDiv.style.visibility = "visible";
+            alertMsg.textContent = "No hay suficiente espacio en los contenedores.";
+        } else if (carga.childElementCount === 0) {
+            alertsDiv.style.visibility = "visible";
+            alertMsg.textContent = "Se aplicó la mejor solución.";
+        }
+
+
+    });
+
+    btnExtraBin.disabled = true;
+    btnExtraBin.style.cursor = 'not-allowed';
 });
