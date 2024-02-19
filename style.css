@@ -128,7 +128,7 @@ body {
     min-height: 580px;
     margin: auto auto;
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
     overflow-x: scroll;
     background-color: #4b4d4c;
 }
@@ -236,7 +236,7 @@ input {
 .btnExtraBin::after{
     position: absolute;
     content: "+1";
-    right: -15px;
+    right: 30px;
     top: 60px;
     font-size: .8rem;
     background-color: #ff0000;
@@ -247,8 +247,8 @@ input {
 
 .btnExtraBin::before{
     position: absolute;
-    content: "$ X2";
-    right: -15px;
+    content: "$X2";
+    right: 25px;
     top: 100px;
     font-size: .8rem;
     background-color: #00a81c;

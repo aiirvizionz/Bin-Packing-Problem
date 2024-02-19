@@ -273,6 +273,31 @@ function quicksort(arr) {
 }
 
 
+let emptyBinsCount = 0;
+
+function eliminarContenedoresVacios(bins) {
+    let emptyBinsCount = 0;
+    const binsToRemove = [];
+
+    // Encuentra y marca los contenedores vacíos para eliminarlos
+    bins.forEach((bin, index) => {
+        if (bin.childElementCount === 0) {
+            emptyBinsCount++;
+            binsToRemove.push(index);
+        }
+    });
+
+    // Elimina los contenedores vacíos comenzando desde el final para evitar problemas con los índices
+    for (let i = binsToRemove.length - 1; i >= 0; i--) {
+        const indexToRemove = binsToRemove[i];
+        containerBins.removeChild(bins[indexToRemove]);
+        bins.splice(indexToRemove, 1);
+    }
+
+    return emptyBinsCount;
+}
+
+
 // Boton para la funcion de solucion
 const btnSolution = document.querySelector('.btnSolution');
 
@@ -300,8 +325,11 @@ btnSolution.addEventListener('click', function () {
     });
 
 
+    // Asignar las figuras a los contenedores en orden de primero a último
+    let currentBinIndex = 0;
     figuresArray.forEach((figure) => {
-        bins.forEach((bin) => {
+        while (currentBinIndex < bins.length) {
+            const bin = bins[currentBinIndex];
             const figuresInsideBin = bin.querySelectorAll('.figure');
             let currentBinUsedSpace = 0;
 
@@ -311,20 +339,18 @@ btnSolution.addEventListener('click', function () {
 
             if (currentBinUsedSpace + parseInt(figure.textContent, 10) <= limiteBin) {
                 bin.appendChild(figure);
+                break;
             }
-        });
-
-        // Alertas de casos para la solución
-        if (figure.parentNode === carga) {
-            alertsDiv.style.visibility = "visible";
-            alertMsg.textContent = "No hay suficiente espacio en los contenedores.";
-        } else if (carga.childElementCount === 0) {
-            alertsDiv.style.visibility = "visible";
-            alertMsg.textContent = "Se aplicó la mejor solución.";
+            currentBinIndex++;
         }
-
-
     });
+    
+    // Eliminar los contenedores vacíos al momento de acomodar las figuras
+    const emptyBinsRemoved = eliminarContenedoresVacios(bins);
+
+    // Mostrar mensaje de alerta final con el contador de contenedores vacíos eliminados
+    alertsDiv.style.visibility = "visible";
+    alertMsg.textContent = `Se aplicó la mejor solución. Se eliminaron ${emptyBinsRemoved} contenedor(es) vacío(s).`;
 
     btnExtraBin.disabled = true;
     btnExtraBin.style.cursor = 'not-allowed';
