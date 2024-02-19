@@ -324,12 +324,10 @@ btnSolution.addEventListener('click', function () {
         bin.innerHTML = '';
     });
 
+    bins.reverse();
 
-    // Asignar las figuras a los contenedores en orden de primero a último
-    let currentBinIndex = 0;
     figuresArray.forEach((figure) => {
-        while (currentBinIndex < bins.length) {
-            const bin = bins[currentBinIndex];
+        bins.forEach((bin) => {
             const figuresInsideBin = bin.querySelectorAll('.figure');
             let currentBinUsedSpace = 0;
 
@@ -339,12 +337,10 @@ btnSolution.addEventListener('click', function () {
 
             if (currentBinUsedSpace + parseInt(figure.textContent, 10) <= limiteBin) {
                 bin.appendChild(figure);
-                break;
             }
-            currentBinIndex++;
-        }
+        })
     });
-    
+
     // Eliminar los contenedores vacíos al momento de acomodar las figuras
     const emptyBinsRemoved = eliminarContenedoresVacios(bins);
 
